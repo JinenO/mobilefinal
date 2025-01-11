@@ -36,7 +36,7 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
             .then(data => {
                 if (data.includes('Login successful')) {
                     alert('Login successful!');
-                    window.location.href = "../journal.html"; // Redirect to journal page on success
+                    window.location.href = "../profile.html"; // Redirect to journal page on success
                 } else {
                     alert(data); // Show error message from the server
                 }
