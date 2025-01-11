@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+
+<body>
+    <div class="profile-container">
+        <h1>User Profile</h1>
+        <div class="profile-pic-container">
+            <img id="profile-pic" src="" alt="Profile Picture">
+        </div>
+        <div class="profile-info">
+            <!-- Username -->
+            <p><strong>Username:</strong>
+                <span id="username"></span></br>
+                <button class="edit-btn" onclick="editField('username')">Edit</button>
+            </p>
+
+            <!-- Email (non-editable) -->
+            <p><strong>Email:</strong><span id="email"></span></p>
+
+            <!-- Birthday -->
+            <p><strong>Birthday:</strong>
+                <span id="birthday"></span></br>
+                <button class="edit-btn" onclick="editField('birthday')">Edit</button>
+            </p>
+
+            <!-- Gender -->
+            <p><strong>Gender:</strong>
+                <span id="gender"></span></br>
+                <button class="edit-btn" onclick="editField('gender')">Edit</button>
+            </p>
+        </div>
+
+        <!-- Save button -->
+        <button id="save-btn" style="display: none;" onclick="saveProfile()">Save Changes</button>
+        <button id="logout-btn" onclick="confirmLogout()">Logout</button>
+    </div>
+
+    <script src="js/profile.js"></script>
+</body>
+
+</html>

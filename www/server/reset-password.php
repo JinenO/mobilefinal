@@ -3,10 +3,10 @@ header('Content-Type: application/json');
 session_start(); // Optional, depending on session usage
 
 // Database credentials
-$servername = "sql101.infinityfree.com";
-$username = "if0_38064906";
-$password = "InfinityAcc329";
-$dbname = "if0_38064906_final";
+$servername = "sql103.infinityfree.com";
+$username = "if0_38074629"; // replace with your InfinityFree database username
+$password = "eTuY3NCjICH"; // replace with your InfinityFree database password
+$dbname = "if0_38074629_Mobile_finalProject"; // replace with your InfinityFree database name
 
 // Create database connection
 $conn = new mysqli($servername, $username, $password, $dbname);
