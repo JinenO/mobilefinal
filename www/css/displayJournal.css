@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
 body {
     font-family: 'Poppins', sans-serif;
     display: flex;
@@ -7,7 +8,8 @@ body {
     min-height: 100vh;
     margin: 0;
     position: relative;
-    filter: brightness(1.2); /* Brighten the image for more clarity */
+    filter: brightness(1.2);
+    /* Brighten the image for more clarity */
     background-color: #f0f8ff;
 }
 
@@ -91,25 +93,25 @@ header h1 {
     object-fit: cover;
 }
 
-        /* Style for the journal entry box */
-        .journal-box {
-            background-color: white;
-            padding: 15px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
+/* Style for the journal entry box */
+.journal-box {
+    background-color: white;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
 
-        .journal-image {
-            max-width: 100px;
-            max-height: 100px;
-            margin: 10px;
-            object-fit: cover;
-        }
+.journal-image {
+    max-width: 100px;
+    max-height: 100px;
+    margin: 10px;
+    object-fit: cover;
+}
 
-        .actions-btns button {
-            margin: 5px;
-        }
+.actions-btns button {
+    margin: 5px;
+}
 
 .quote {
     font-family: 'Fredoka One', sans-serif;
@@ -122,28 +124,39 @@ header h1 {
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
     background-color: rgba(250, 250, 250, 0.6);
     letter-spacing: 1.5px;
-    
- 
-    display: inline-block;  /* Make sure it's inline and centered */
-    animation: shakeEffect 10s ease-in-out infinite;  /* Animation: Shake every 0.5s */
+
+
+    display: inline-block;
+    /* Make sure it's inline and centered */
+    animation: shakeEffect 10s ease-in-out infinite;
+    /* Animation: Shake every 0.5s */
 }
 
 /* Keyframes for Shake Effect */
 @keyframes shakeEffect {
     0% {
-        transform: translateX(0);  /* No movement at start */
+        transform: translateX(0);
+        /* No movement at start */
     }
+
     25% {
-        transform: translateX(-10px); /* Move slightly to the left */
+        transform: translateX(-10px);
+        /* Move slightly to the left */
     }
+
     50% {
-        transform: translateX(10px);  /* Move slightly to the right */
+        transform: translateX(10px);
+        /* Move slightly to the right */
     }
+
     75% {
-        transform: translateX(-10px); /* Move slightly to the left again */
+        transform: translateX(-10px);
+        /* Move slightly to the left again */
     }
+
     100% {
-        transform: translateX(0);  /* Back to original position */
+        transform: translateX(0);
+        /* Back to original position */
     }
 }
 
@@ -151,7 +164,8 @@ header h1 {
     display: flex;
     justify-content: center;
     font-weight: bold;
-    margin-bottom: 8px;  /* Optional: Add some spacing for better readability */
+    margin-bottom: 8px;
+    /* Optional: Add some spacing for better readability */
 }
 
 .page-title {
@@ -171,14 +185,16 @@ header h1 {
 }
 
 .page-title-icon {
-    width: 80px; /* Adjust the size of the image */
+    width: 80px;
+    /* Adjust the size of the image */
     height: 80px;
     object-fit: cover;
-   
+
 }
 
 .me-2 {
-    margin-right: 0; /* No extra space */
+    margin-right: 0;
+    /* No extra space */
 }
 
 
@@ -190,18 +206,20 @@ header h1 {
 }
 
 .journal-box {
-    background-color: rgba(255, 255, 255, 0.6); /* Transparent background */
+    background-color: rgba(255, 255, 255, 0.6);
     border-radius: 30px;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-    padding: 10;  /* No padding, so the image spans fully */
-    width: 300px; /* Box width */
-    transition: transform 0.3s ease-in-out;
+    padding: 20px;
+    width: 300px;
+    transition: all 0.3s ease;
     display: flex;
-    flex-direction: column; /* Ensures content inside is stacked vertically */
+    flex-direction: column;
 }
 
 .journal-box:hover {
-    transform: translateY(-10px); /* Hover effect to lift the box */
+    transform: translateY(-5px);
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.15);
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 .journal-box div {
@@ -215,33 +233,41 @@ header h1 {
     font-weight: 600;
 }
 
-      .journal-image {
-        width: 150px; /* Reduced width for a thumbnail */
-        height: 150px; /* Fixed height for the thumbnail */
-        object-fit: cover;
-        border-radius: 8px;
-        border: 3px solid #ddd; /* Frame/border around the image */
-        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for effect */
-        margin-top: 10px;
-    }
+.journal-image {
+    width: 150px;
+    /* Reduced width for a thumbnail */
+    height: 150px;
+    /* Fixed height for the thumbnail */
+    object-fit: cover;
+    border-radius: 8px;
+    border: 3px solid #ddd;
+    /* Frame/border around the image */
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+    /* Optional shadow for effect */
+    margin-top: 10px;
+}
 
-    .no-image {
-        padding: 10px;
-        text-align: center;
-        font-size: 12px;
-        background-color: #f0f0f0;
-        border: 2px solid #ccc;
-        border-radius: 8px;
-        width: 150px;
-        margin-top: 10px;
-    }
+.no-image {
+    padding: 10px;
+    text-align: center;
+    font-size: 12px;
+    background-color: #f0f0f0;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    width: 150px;
+    margin-top: 10px;
+}
 
 .d-flex {
     display: flex;
-    justify-content: center;  /* Horizontally centers the content */
-    align-items: center;      /* Vertically centers the content inside */
-    width: 100%;              /* Makes sure the flex container takes full width */
-    height: auto;             /* Maintain dynamic height according to content */
+    justify-content: center;
+    /* Horizontally centers the content */
+    align-items: center;
+    /* Vertically centers the content inside */
+    width: 100%;
+    /* Makes sure the flex container takes full width */
+    height: auto;
+    /* Maintain dynamic height according to content */
 }
 
 .actions-btns {
@@ -277,4 +303,65 @@ header h1 {
 
 .actions-btns .btn-danger:hover {
     background-color: #c82333;
+}
+
+.journal-box {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.chart-container {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 15px;
+    margin: 15px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.chart-container:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+}
+
+canvas {
+    max-width: 100%;
+}
+
+.spending-summary {
+    background-color: rgba(248, 249, 250, 0.9);
+    border-radius: 15px;
+    margin: 15px 0;
+    padding: 15px;
+    transition: all 0.3s ease;
+}
+
+.total-box {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 15px;
+}
+
+.total-box h5 {
+    color: #3c4a66;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.spending-breakdown {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px dashed rgba(0, 0, 0, 0.1);
+}
+
+.spending-breakdown div {
+    padding: 5px 0;
+    transition: all 0.2s ease;
+}
+
+.spending-breakdown div:hover {
+    transform: translateX(5px);
+    color: #3c4a66;
 }
