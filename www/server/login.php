@@ -1,47 +1,48 @@
 <?php
-session_start();
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
+if ($_SERVER["REQUEST_METHOD"] === "OPTIONS") {
+    header('HTTP/1.1 200 OK');
+    exit();
+}
+
+// Get JSON input
+$data = json_decode(file_get_contents("php://input"), true);
+$email = $data['email'];
+$password = $data['password'];
 
 // Database connection
 $servername = "sql103.infinityfree.com";
-$username = "if0_38074629"; // replace with your InfinityFree database username
-$password = "eTuY3NCjICH"; // replace with your InfinityFree database password
-$dbname = "if0_38074629_Mobile_finalProject"; // replace with your InfinityFree database name
+$username = "if0_38074629";
+$passwordDB = "eTuY3NCjICH";
+$dbname = "if0_38074629_Mobile_finalProject";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $passwordDB, $dbname);
 
-// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+$sql = "SELECT id, password FROM Users WHERE email = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$stmt->store_result();
 
-    // SQL to fetch the user record
-    $sql = "SELECT id, password FROM Users WHERE email = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $stmt->store_result();
+if ($stmt->num_rows > 0) {
+    $stmt->bind_result($id, $hashedPassword);
+    $stmt->fetch();
 
-    if ($stmt->num_rows > 0) {
-        $stmt->bind_result($id, $hashedPassword);
-        $stmt->fetch();
-
-        // Verify password
-        if (password_verify($password, $hashedPassword)) {
-            $_SESSION['user_id'] = $id;
-            echo "Login successful!";
-        } else {
-            echo "Invalid password. Please try again.";
-        }
+    if (password_verify($password, $hashedPassword)) {
+        echo json_encode(["success" => true, "message" => "Login successful!"]);
     } else {
-        echo "No user found with that email. Please try again.";
+        echo json_encode(["success" => false, "message" => "Invalid password."]);
     }
-
-    $stmt->close();
+} else {
+    echo json_encode(["success" => false, "message" => "No user found with that email."]);
 }
 
+$stmt->close();
 $conn->close();
-?>

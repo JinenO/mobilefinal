@@ -1,4 +1,7 @@
 <?php
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST, DELETE, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type, Authorization');
 session_start();
 
 // Database connection
@@ -36,7 +39,7 @@ if ($collection_id) {
 
         // If a date is specified, get forecast (this could be 5 days, etc.)
         if ($date) {
-            $forecast_data = fetchForecast($state_name, $date); // This is for the forecast data
+            $forecast_data = fetchWeather($state_name, $date); // This is for the forecast data
             echo json_encode(['forecast' => $forecast_data]);
         } else {
             // Return the current weather info
