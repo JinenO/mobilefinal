@@ -56,19 +56,34 @@ document.getElementById('signupForm').addEventListener('submit', function (event
     // If all validations are passed, proceed to check if email already exists
     if (isValid) {
         const xhr = new XMLHttpRequest();
-        xhr.open("POST", "server/check_email.php", true);
+        xhr.open("POST", "https://triptact.cmsa.digital/check_email.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onload = function () {
-            if (xhr.responseText.includes("Email is already registered")) {
-                alert(xhr.responseText); // Show message if email exists
-                isValid = false;
-            } else {
-                // Proceed to submit the form data if email is valid
-                submitFormData();
+            if (xhr.status === 200) {
+                try {
+                    const response = JSON.parse(xhr.responseText); // Parse the server's JSON response
+
+                    if (response.success) {
+                        alert(response.message); // Success message
+                        submitFormData();
+                        window.location.href = "login.html";
+                    } else {
+                        alert(response.message); // Error message from the server
+                    }
+                } catch (error) {
+                    alert("An error occurred while processing the server response.");
+                }
             }
+
         };
+
+        xhr.onerror = function () {
+            alert("An error occurred during the request. Please check your connection.");
+        };
+
         xhr.send("email=" + encodeURIComponent(email));
     }
+
 });
 
 // Function to submit form data after email is validated
@@ -77,18 +92,32 @@ function submitFormData() {
     const formData = new FormData(form);
 
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", "server/signup.php", true);
+    xhr.open("POST", "https://triptact.cmsa.digital/signup.php", true);
     xhr.onload = function () {
         if (xhr.status === 200) {
-            alert("Account created successfully!");
-            // Redirect to login page after successful signup
-            window.location.href = "login.html";
-        } else {
-            alert("There was an error creating your account.");
+            try {
+                const response = JSON.parse(xhr.responseText);
+
+                if (response.success) {
+                    alert(response.message); // Display success message
+                    // Redirect to login page after successful signup
+
+                } else {
+                    alert(`Error: ${response.message}`); // Display error message from response
+                }
+            } catch (error) {
+                alert("An error occurred while processing the response.");
+            }
         }
     };
+
+    xhr.onerror = function () {
+        alert("An error occurred during the request. Please check your connection.");
+    };
+
     xhr.send(formData);
 }
+
 
 // Toggle password visibility
 document.getElementById('togglePassword').addEventListener('click', function () {

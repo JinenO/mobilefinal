@@ -25,20 +25,23 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
 
     // If the form is valid, send data to the server
     if (isValid) {
-        fetch('server/login.php', {
+        fetch('https://triptact.infinityfreeapp.com/triptact1/server/login.php', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/json'
             },
-            body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
+            body: JSON.stringify({
+                email: email,
+                password: password
+            })
         })
-            .then(response => response.text())
+            .then(response => response.json()) // Expect JSON response from the server
             .then(data => {
-                if (data.includes('Login successful')) {
+                if (data.success) {
                     alert('Login successful!');
-                    window.location.href = "../profile.html"; // Redirect to journal page on success
+                    window.location.href = "travel.html"; // Redirect to travel page on success
                 } else {
-                    alert(data); // Show error message from the server
+                    alert(data.message || 'Invalid email or password. Please try again.');
                 }
             })
             .catch(error => {
